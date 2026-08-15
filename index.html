@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Khalid &amp; Mariam — Engagement | خالد ومريم</title>
 <meta name="description" content="You are invited to the engagement of Khalid &amp; Mariam. Saturday, 22 August 2026, 8:00 PM at Villa Rose, Maadi, Cairo.">
-<meta name="theme-color" content="#faf6ee">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#fcfbf8">
+<meta name="color-scheme" content="light dark">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Khalid &amp; Mariam — Engagement · خالد ومريم">
 <meta property="og:description" content="Saturday, 22 August 2026 · 8:00 PM · Villa Rose, Maadi, Cairo — السبت ٢٢ أغسطس ٢٠٢٦">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf6ee'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23a9843f' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fcfbf8'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23a9843f' stroke-width='3'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,21 @@
 <style>
 /* ───────────────  TOKENS  ─────────────── */
 :root{
-  --paper:#fdfaf4;
-  --ink:#332f28;
-  --ink-soft:#6f6555;
+  --paper:#fcfbf8;
+  --ink:#1e2c49;
+  --ink-soft:#5d6880;
   --gold:#a9843f;
   --gold-lt:#d8bd85;
   --line:rgba(169,132,63,.28);
   --line-soft:rgba(169,132,63,.16);
+  --bg-grad:radial-gradient(120% 60% at 50% 0%, #ffffff 0%, #f6f1e6 55%, #e8e0cd 100%);
+  --surface:var(--surface);
+  --surface-2:var(--surface-2);
+  --sh-drop:var(--sh-drop);
+  --sh-1:var(--sh-1);
+  --sh-2:var(--sh-2);
+  --btn-text:#fffaf0;
+  --gold-hover:#8f6d31;
   --display:"Italiana",Didot,"Bodoni MT",Garamond,Georgia,serif;
   --serif:"Cormorant Garamond",Garamond,Georgia,"Times New Roman",serif;
   --arabic:"Amiri","Traditional Arabic",serif;
@@ -35,15 +43,53 @@
   --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+html.dark{
+  --paper:#16213c;
+  --ink:#f2ecdf;
+  --ink-soft:#b6ae9c;
+  --gold:#cfa658;
+  --gold-lt:#e3cf9b;
+  --line:rgba(207,166,88,.28);
+  --line-soft:rgba(207,166,88,.16);
+  --bg-grad:radial-gradient(120% 60% at 50% 0%, #2a3a63 0%, #1a2747 55%, #0d1730 100%);
+  --surface:rgba(13,23,48,.55);
+  --surface-2:rgba(13,23,48,.45);
+  --sh-drop:rgba(0,0,0,.20);
+  --sh-1:rgba(0,0,0,.10);
+  --sh-2:rgba(0,0,0,.07);
+  --btn-text:#111c36;
+  --gold-hover:#b58c41;
+}
+@media (prefers-color-scheme: dark){
+  html:not(.light){
+  --paper:#16213c;
+  --ink:#f2ecdf;
+  --ink-soft:#b6ae9c;
+  --gold:#cfa658;
+  --gold-lt:#e3cf9b;
+  --line:rgba(207,166,88,.28);
+  --line-soft:rgba(207,166,88,.16);
+  --bg-grad:radial-gradient(120% 60% at 50% 0%, #2a3a63 0%, #1a2747 55%, #0d1730 100%);
+  --surface:rgba(13,23,48,.55);
+  --surface-2:rgba(13,23,48,.45);
+  --sh-drop:rgba(0,0,0,.20);
+  --sh-1:rgba(0,0,0,.10);
+  --sh-2:rgba(0,0,0,.07);
+  --btn-text:#111c36;
+  --gold-hover:#b58c41;
+  }
+}
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
+  transition:background-color .4s ease,color .4s ease;
   overflow-x:hidden;
   color:var(--ink);
   font-family:var(--serif);
   background:var(--paper);
-  background-image:radial-gradient(120% 60% at 50% 0%, #fffdf8 0%, #f5ecdc 55%, #e9dcc4 100%);
+  background-image:var(--bg-grad);
   background-attachment:fixed;
   -webkit-font-smoothing:antialiased;
 }
@@ -82,17 +128,38 @@ html:not(.ar) .t-ar{display:none}
   min-height:40px;padding:0 18px;
   display:inline-flex;align-items:center;justify-content:center;
   border:1px solid var(--line);border-radius:999px;
-  background:rgba(255,253,248,.82);
+  background:var(--surface);
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   color:var(--gold);cursor:pointer;
   font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;
-  box-shadow:0 6px 18px rgba(120,95,50,.10);
+  box-shadow:0 6px 18px var(--sh-1);
   transition:background-color .3s ease;
   -webkit-tap-highlight-color:transparent;
 }
 .lang-toggle:hover,.lang-toggle:active{background:rgba(169,132,63,.12)}
 .lang-toggle:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
 .lang-toggle .ar-word{font-family:var(--arabic);font-size:15px;letter-spacing:0;font-weight:700}
+
+.theme-toggle{
+  position:fixed;
+  top:calc(14px + env(safe-area-inset-top));
+  inset-inline-start:14px;
+  z-index:60;
+  width:40px;min-height:40px;padding:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:999px;
+  background:var(--surface);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--gold);cursor:pointer;
+  box-shadow:0 6px 18px var(--sh-1);
+  transition:background-color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.theme-toggle:hover,.theme-toggle:active{background:rgba(169,132,63,.12)}
+.theme-toggle:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.theme-toggle svg{width:17px;height:17px}
+html.dark .theme-toggle .i-moon{display:none}
+html:not(.dark) .theme-toggle .i-sun{display:none}
 
 /* ───────────────  PETALS  ─────────────── */
 .petal{
@@ -148,7 +215,7 @@ html:not(.ar) .t-ar{display:none}
   display:block;
   width:clamp(112px,30vw,140px);
   height:auto;
-  filter:drop-shadow(0 12px 22px rgba(133,102,44,.20));
+  filter:drop-shadow(0 12px 22px var(--sh-drop));
   animation:breathe 6.5s ease-in-out infinite;
 }
 @keyframes breathe{0%,100%{transform:translateY(-5px)}50%{transform:translateY(5px)}}
@@ -177,8 +244,8 @@ html:not(.ar) .t-ar{display:none}
   padding:12px 4px 9px;
   border:1px solid var(--line);
   border-radius:2px;
-  background:rgba(255,253,248,.66);
-  box-shadow:0 10px 24px rgba(120,95,50,.07);
+  background:var(--surface-2);
+  box-shadow:0 10px 24px var(--sh-2);
 }
 .cd-num{
   display:block;
@@ -217,8 +284,8 @@ html.ar .cd-num{font-family:var(--arabic);font-weight:700}
   -webkit-tap-highlight-color:transparent;
 }
 .btn svg{width:15px;height:15px;flex:none}
-.btn.solid{background:var(--gold);color:#fffaf0;border-color:var(--gold)}
-.btn.solid:hover,.btn.solid:active{background:#8f6d31;border-color:#8f6d31}
+.btn.solid{background:var(--gold);color:var(--btn-text);border-color:var(--gold)}
+.btn.solid:hover,.btn.solid:active{background:var(--gold-hover);border-color:var(--gold-hover)}
 .btn:hover,.btn:active{background:rgba(169,132,63,.10)}
 .btn:hover{transform:translateY(-1px)}
 .btn:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
@@ -229,10 +296,10 @@ html.ar .cd-num{font-family:var(--arabic);font-weight:700}
   width:min(100%,420px);
   padding:clamp(52px,14vw,72px) clamp(24px,7vw,40px) clamp(34px,9vw,44px);
   text-align:center;
-  background:rgba(255,253,248,.82);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:210px 210px 4px 4px;   /* the villa arch */
-  box-shadow:0 24px 50px rgba(120,95,50,.10);
+  box-shadow:0 24px 50px var(--sh-1);
 }
 .card::before{
   content:"";position:absolute;inset:7px;
@@ -314,6 +381,11 @@ html:not(.ar) .names .t-ar{display:none}
 <button class="lang-toggle" id="langBtn" type="button" aria-label="التبديل إلى العربية / Switch language">
   <span class="t-en"><span class="ar-word">العربية</span></span>
   <span class="t-ar">English</span>
+</button>
+
+<button class="theme-toggle" id="themeBtn" type="button" aria-label="Switch between dark and light mode / التبديل بين الوضع الداكن والفاتح">
+  <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+  <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
 </button>
 
 <!-- ═════════  SCREEN 1 — THE OPENING  ═════════ -->
@@ -502,6 +574,24 @@ html:not(.ar) .names .t-ar{display:none}
   "use strict";
   var docEl = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── Dark / light mode: follows the device setting, button overrides ── */
+  function setTheme (dark) {
+    docEl.classList.toggle("dark", dark);
+    docEl.classList.toggle("light", !dark);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.content = dark ? "#16213c" : "#fcfbf8";
+  }
+  var themeBtn = document.getElementById("themeBtn");
+  var storedTheme = null;
+  try { storedTheme = localStorage.getItem("kmTheme"); } catch (e) {}
+  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(storedTheme ? storedTheme === "dark" : prefersDark);
+  if (themeBtn) themeBtn.addEventListener("click", function () {
+    var dark = !docEl.classList.contains("dark");
+    setTheme(dark);
+    try { localStorage.setItem("kmTheme", dark ? "dark" : "light"); } catch (e) {}
+  });
 
   /* ── Language toggle ── */
   var langBtn = document.getElementById("langBtn");
